@@ -1,6 +1,6 @@
 # AI SOC Analyst — Cybersecurity Threat Hunter
 
-> Internship Project | [YOUR NAME] | May–June 2026
+> Internship Project | Sagar Vara, Rudra Patel | May–June 2026
 
 An AI-powered Security Operations Center (SOC) analyst that detects attacks, analyzes logs, correlates events, and explains threats using machine learning and the Claude AI API.
 
