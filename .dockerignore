@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.git/
+data/soc_analyst.db
+models/*.joblib
+.pytest_cache/

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SOC Analyst — Live Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;
+    --muted:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922;
+    --red:#f85149;--purple:#bc8cff;--orange:#ffa657;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;}
+
+  /* HEADER */
+  header{background:var(--card);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  header h1{font-size:17px;font-weight:700;color:var(--blue);}
+  header h1 span{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px;}
+  .header-right{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:5px;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  #ws-status{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;}
+  .ws-on{background:#1a3a1a;color:var(--green);}
+  .ws-off{background:#3a1a1a;color:var(--red);}
+
+  /* MODE SWITCHER */
+  .switcher{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:4px 8px;}
+  .switcher span{font-size:11px;color:var(--muted);white-space:nowrap;}
+  .mode-btn{padding:5px 14px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;}
+  .mode-btn:hover{color:var(--text);background:#21262d;}
+  .mode-btn.active{background:var(--blue);color:#fff;}
+  .mode-btn.loading{opacity:.6;cursor:wait;}
+
+  /* LAYOUT */
+  main{padding:16px 20px;max-width:1600px;margin:0 auto;}
+
+  /* METRIC CARDS */
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;}
+  .card .label{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:6px;}
+  .card .value{font-size:26px;font-weight:700;line-height:1;}
+  .card .sub{font-size:11px;color:var(--muted);margin-top:5px;}
+  .card.blue{border-top:3px solid var(--blue);}
+  .card.red{border-top:3px solid var(--red);}
+  .card.green{border-top:3px solid var(--green);}
+  .card.yellow{border-top:3px solid var(--yellow);}
+  .card.purple{border-top:3px solid var(--purple);}
+
+  /* MODE BADGE */
+  .mode-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:600;margin-bottom:12px;}
+  .mode-badge.sample{background:#1a2a3a;color:var(--blue);border:1px solid #1e3a5f;}
+  .mode-badge.realpc{background:#1a3a1a;color:var(--green);border:1px solid #1a4a1a;}
+  .mode-badge.combined{background:#2a1a3a;color:var(--purple);border:1px solid #3a1a5a;}
+
+  /* GRID */
+  .grid3{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+
+  /* PANEL */
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .panel-hd{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .panel-hd h3{font-size:13px;font-weight:600;}
+  .panel-hd .badge{font-size:11px;padding:2px 8px;border-radius:10px;background:#21262d;color:var(--muted);}
+  .panel-bd{padding:12px 14px;}
+
+  /* EVENT TABLE */
+  .etable{width:100%;border-collapse:collapse;font-size:12px;}
+  .etable th{text-align:left;padding:7px 9px;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);border-bottom:1px solid var(--border);}
+  .etable td{padding:7px 9px;border-bottom:1px solid #1c2128;vertical-align:middle;}
+  .etable tr:hover td{background:#1c2128;}
+  .etable tr:last-child td{border-bottom:none;}
+
+  /* BADGES */
+  .sev{display:inline-block;padding:2px 7px;border-radius:9px;font-size:10px;font-weight:700;letter-spacing:.3px;}
+  .sev-CRITICAL{background:#3a0f0f;color:#ff6b6b;}
+  .sev-HIGH{background:#2d1a0a;color:var(--orange);}
+  .sev-MEDIUM{background:#2d2a0a;color:var(--yellow);}
+  .sev-LOW{background:#0a1f2d;color:var(--blue);}
+  .sev-INFO{background:#1a1f2d;color:var(--muted);}
+  .tag{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-family:monospace;background:#1f2937;color:var(--blue);border:1px solid #1e3a5f;}
+
+  /* SCORE BAR */
+  .sbar{display:flex;align-items:center;gap:6px;}
+  .strack{flex:1;height:4px;background:#21262d;border-radius:2px;overflow:hidden;}
+  .sfill{height:100%;border-radius:2px;transition:width .3s;}
+  .snum{font-size:11px;color:var(--muted);min-width:30px;text-align:right;}
+
+  /* ANALYZE BTN */
+  .ai-btn{background:var(--purple);color:#fff;border:none;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;}
+  .ai-btn:hover{background:#a875f0;}
+
+  /* AI PANEL */
+  .ai-hd{padding:10px 14px;background:#0d1117;border-bottom:1px solid var(--border);font-size:13px;font-weight:600;color:var(--purple);}
+  .ai-bd{padding:12px 14px;}
+  .ai-f{margin-bottom:10px;}
+  .ai-f label{font-size:10px;text-transform:uppercase;color:var(--muted);letter-spacing:.5px;display:block;margin-bottom:3px;}
+  .ai-f p{font-size:12px;color:var(--text);line-height:1.6;}
+  .ai-rec{padding:5px 9px;background:#1c2128;border-radius:4px;font-size:11px;color:var(--green);margin-bottom:3px;}
+  .ai-rec::before{content:"→ ";color:var(--green);}
+
+  /* KILL CHAIN */
+  .kc{background:#1a0a0a;border:1px solid #5c1a1a;border-radius:6px;padding:10px 12px;margin-bottom:8px;}
+  .kc-title{color:var(--red);font-weight:700;font-size:12px;margin-bottom:3px;}
+  .kc-desc{color:var(--muted);font-size:11px;margin-bottom:6px;}
+  .kc-meta{display:flex;gap:10px;font-size:10px;color:var(--muted);}
+  .kc-meta span{color:var(--text);font-weight:600;}
+
+  /* TOP IPS */
+  .ip-row{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid #1c2128;gap:8px;}
+  .ip-row:last-child{border-bottom:none;}
+  .ip-addr{font-family:monospace;font-size:12px;flex:1;}
+  .ip-bar{flex:2;height:4px;background:#21262d;border-radius:2px;overflow:hidden;}
+  .ip-fill{height:100%;background:var(--red);border-radius:2px;}
+  .ip-cnt{font-size:11px;color:var(--muted);min-width:50px;text-align:right;}
+
+  /* CHART */
+  .chart-wrap{height:190px;}
+
+  /* FILTERS */
+  .tabs{display:flex;gap:5px;margin-bottom:10px;}
+  .tab{padding:4px 11px;border-radius:11px;font-size:11px;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:transparent;transition:all .15s;}
+  .tab.active,.tab:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .search-bar{width:100%;background:#21262d;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;margin-bottom:10px;outline:none;}
+  .search-bar:focus{border-color:var(--blue);}
+
+  /* SCROLLABLE */
+  .scrollable{max-height:320px;overflow-y:auto;}
+  .scrollable::-webkit-scrollbar{width:4px;}
+  .scrollable::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+  /* EMPTY */
+  .empty{text-align:center;padding:24px;color:var(--muted);font-size:12px;}
+
+  /* TOAST */
+  #toast{position:fixed;top:16px;right:16px;z-index:999;background:#1c2128;border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:12px;max-width:300px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  #toast.show{display:block;animation:slideIn .3s ease;}
+  @keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+  /* SWITCHING OVERLAY */
+  #overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:998;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+  #overlay.show{display:flex;}
+  .spin{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin 1s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spin-text{color:var(--text);font-size:14px;font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- SWITCHING OVERLAY -->
+<div id="overlay">
+  <div class="spin"></div>
+  <div class="spin-text" id="overlay-text">Switching data source...</div>
+  <div style="font-size:12px;color:var(--muted)">Running ML pipeline — please wait</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <h1>🛡️ AI SOC Analyst <span>Cybersecurity Threat Hunter v4.0</span></h1>
+  </div>
+
+  <!-- MODE SWITCHER -->
+  <div class="switcher">
+    <span>Data source:</span>
+    <button class="mode-btn active" id="btn-sample"   onclick="switchMode('sample')">📊 Sample Logs</button>
+    <button class="mode-btn"        id="btn-realpc"   onclick="switchMode('realpc')">💻 My PC Logs</button>
+    <button class="mode-btn"        id="btn-combined" onclick="switchMode('combined')">🔀 Combined</button>
+  </div>
+
+  <div class="header-right">
+    <span style="display:flex;align-items:center"><span class="status-dot"></span>Live</span>
+    <span id="ws-status" class="ws-off">⚡ Connecting...</span>
+    <span id="last-update" style="font-size:11px">—</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- MODE BADGE -->
+  <div id="mode-badge" class="mode-badge sample">📊 Showing: Sample Attack Logs</div>
+
+  <!-- METRIC CARDS -->
+  <div class="cards">
+    <div class="card blue"><div class="label">Total Events</div><div class="value" id="m-total">—</div><div class="sub">in database</div></div>
+    <div class="card red"><div class="label">Anomalies</div><div class="value" id="m-anomalies">—</div><div class="sub" id="m-critical">—</div></div>
+    <div class="card yellow"><div class="label">MITRE Tagged</div><div class="value" id="m-mitre">—</div><div class="sub" id="m-mitre-rate">—</div></div>
+    <div class="card green"><div class="label">False Positives</div><div class="value" id="m-fp">—</div><div class="sub">blocked by analysts</div></div>
+    <div class="card purple"><div class="label">Top Attacker</div><div class="value" style="font-size:13px;margin-top:4px" id="m-top-ip">—</div><div class="sub" id="m-top-tech">—</div></div>
+  </div>
+
+  <!-- EVENTS + AI PANEL -->
+  <div class="grid3">
+    <div class="panel">
+      <div class="panel-hd">
+        <h3>Live Security Events</h3>
+        <div style="display:flex;gap:6px;align-items:center">
+          <span class="badge" id="events-count">0</span>
+          <span style="font-size:11px;color:var(--green);display:flex;align-items:center"><span class="status-dot"></span>live</span>
+        </div>
+      </div>
+      <div class="panel-bd">
+        <div class="tabs">
+          <button class="tab active" onclick="filterEvents(this,'ALL')">All</button>
+          <button class="tab" onclick="filterEvents(this,'CRITICAL')">Critical</button>
+          <button class="tab" onclick="filterEvents(this,'HIGH')">High</button>
+          <button class="tab" onclick="filterEvents(this,'anomaly')">Anomalies</button>
+        </div>
+        <input class="search-bar" id="search" placeholder="Search events, IPs, techniques..." oninput="renderEvents()">
+        <div class="scrollable">
+          <table class="etable">
+            <thead><tr>
+              <th>Severity</th><th>Source IP</th><th>Message</th>
+              <th>Technique</th><th>Score</th><th>Action</th>
+            </tr></thead>
+            <tbody id="events-body"><tr><td colspan="6" class="empty">Connecting...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI PANEL -->
+    <div class="panel" style="overflow:hidden;">
+      <div class="ai-hd">🤖 Gemini AI Analysis</div>
+      <div class="ai-bd" id="ai-body">
+        <div class="empty" style="padding:40px 10px">
+          Click <strong>AI ▶</strong> on any event<br>to get AI threat analysis
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHART + KILL CHAINS + TOP IPS -->
+  <div class="grid2">
+    <div class="panel">
+      <div class="panel-hd"><h3>Anomaly Score Timeline</h3><span class="badge">last 30 events</span></div>
+      <div class="panel-bd"><div class="chart-wrap"><canvas id="chart"></canvas></div></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="panel">
+        <div class="panel-hd"><h3>🚨 Kill Chain Alerts</h3><span class="badge" id="kc-count">0 detected</span></div>
+        <div class="panel-bd" id="kc-body"><div class="empty">Scanning...</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><h3>Top Attacker IPs</h3><span class="badge">by count</span></div>
+        <div class="panel-bd" id="ips-body"><div class="empty">Loading...</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const API = 'http://localhost:8000';
+const WS  = 'ws://localhost:8000/ws/events';
+
+let allEvents    = [];
+let activeFilter = 'ALL';
+let chart        = null;
+let ws           = null;
+let currentMode  = 'sample';
+
+// ── CHART ──────────────────────────────────────────────────────
+function initChart() {
+  const ctx = document.getElementById('chart').getContext('2d');
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels:[], datasets:[{ label:'Anomaly Score', data:[], backgroundColor:[], borderRadius:3, borderSkipped:false }] },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:false } },
+      scales:{
+        x:{ display:false },
+        y:{ min:0, max:1, ticks:{ color:'#8b949e', font:{size:10} }, grid:{ color:'#21262d' } }
+      },
+      animation:{ duration:300 }
+    }
+  });
+}
+
+function updateChart(events) {
+  const r = events.slice(-30);
+  chart.data.labels = r.map((_,i)=>i);
+  chart.data.datasets[0].data = r.map(e=>parseFloat(e.anomaly_score||0).toFixed(3));
+  chart.data.datasets[0].backgroundColor = r.map(e=>{
+    const s=parseFloat(e.anomaly_score||0);
+    return s>0.75?'#f85149cc':s>0.5?'#ffa657cc':s>0.25?'#d29922cc':'#3fb95066';
+  });
+  chart.update();
+}
+
+// ── METRICS ────────────────────────────────────────────────────
+async function fetchMetrics() {
+  try {
+    const r = await fetch(`${API}/metrics`);
+    const m = await r.json();
+    document.getElementById('m-total').textContent     = (m.total_events||0).toLocaleString();
+    document.getElementById('m-anomalies').textContent = m.total_anomalies||0;
+    document.getElementById('m-critical').textContent  = `${m.critical_events||0} critical`;
+    document.getElementById('m-mitre').textContent     = m.mitre_tagged||0;
+    document.getElementById('m-mitre-rate').textContent= `${m.mitre_tag_rate||0}% tag rate`;
+    document.getElementById('m-fp').textContent        = m.false_positives_blocked||0;
+    document.getElementById('m-top-ip').textContent    = m.top_attacker_ip||'—';
+    document.getElementById('m-top-tech').textContent  = m.top_technique||'—';
+    if (m.top_ips?.length) renderTopIPs(m.top_ips);
+  } catch(e) {}
+}
+
+// ── EVENTS ─────────────────────────────────────────────────────
+async function fetchEvents() {
+  try {
+    const r = await fetch(`${API}/events?limit=150`);
+    const d = await r.json();
+    allEvents = d.events||[];
+    renderEvents();
+    updateChart(allEvents);
+    document.getElementById('events-count').textContent = `${allEvents.length} events`;
+  } catch(e) {}
+}
+
+// ── KILL CHAINS ────────────────────────────────────────────────
+async function fetchKillChains() {
+  try {
+    const r = await fetch(`${API}/correlations/killchains?limit=200`);
+    const d = await r.json();
+    renderKillChains(d.kill_chains||[]);
+  } catch(e) {
+    document.getElementById('kc-body').innerHTML = '<div class="empty">No kill chains detected</div>';
+  }
+}
+
+// ── RENDER EVENTS ──────────────────────────────────────────────
+function filterEvents(btn, f) {
+  activeFilter = f;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderEvents();
+}
+
+function renderEvents() {
+  const search = document.getElementById('search').value.toLowerCase();
+  let filtered = allEvents;
+  if (activeFilter==='CRITICAL') filtered=filtered.filter(e=>e.severity==='CRITICAL');
+  else if (activeFilter==='HIGH') filtered=filtered.filter(e=>e.severity==='HIGH');
+  else if (activeFilter==='anomaly') filtered=filtered.filter(e=>e.is_anomaly);
+  if (search) filtered=filtered.filter(e=>
+    (e.message||'').toLowerCase().includes(search)||
+    (e.source_ip||'').includes(search)||
+    (e.technique_id||'').toLowerCase().includes(search)
+  );
+
+  const tbody = document.getElementById('events-body');
+  if (!filtered.length) {
+    tbody.innerHTML='<tr><td colspan="6" class="empty">No events match filter</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.slice(0,80).map(e=>{
+    const score = parseFloat(e.anomaly_score||0);
+    const col   = score>0.75?'#f85149':score>0.5?'#ffa657':score>0.25?'#d29922':'#3fb950';
+    const msg   = (e.message||'').substring(0,52)+(e.message?.length>52?'…':'');
+    const ev    = JSON.stringify(e).replace(/"/g,'&quot;');
+    return `<tr>
+      <td><span class="sev sev-${e.severity||'INFO'}">${e.severity||'INFO'}</span></td>
+      <td style="font-family:monospace;font-size:11px;color:var(--blue)">${e.source_ip||'—'}</td>
+      <td style="max-width:200px;color:var(--text)">${msg}</td>
+      <td>${e.technique_id?`<span class="tag">${e.technique_id}</span>`:'<span style="color:var(--muted)">—</span>'}</td>
+      <td><div class="sbar"><div class="strack"><div class="sfill" style="width:${score*100}%;background:${col}"></div></div><span class="snum">${score.toFixed(2)}</span></div></td>
+      <td><button class="ai-btn" onclick='analyzeEvent(${ev})'>AI ▶</button></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── RENDER TOP IPs ─────────────────────────────────────────────
+function renderTopIPs(ips) {
+  const max = Math.max(...ips.map(i=>i.total),1);
+  document.getElementById('ips-body').innerHTML = ips.map(ip=>`
+    <div class="ip-row">
+      <span class="ip-addr" style="color:var(--blue)">${ip.ip}</span>
+      <div class="ip-bar"><div class="ip-fill" style="width:${(ip.total/max)*100}%"></div></div>
+      <span class="ip-cnt">${ip.total} events · ${ip.anomalies} anom</span>
+    </div>`).join('');
+}
+
+// ── RENDER KILL CHAINS ─────────────────────────────────────────
+function renderKillChains(chains) {
+  document.getElementById('kc-count').textContent = `${chains.length} detected`;
+  if (!chains.length) {
+    document.getElementById('kc-body').innerHTML='<div class="empty" style="padding:14px">No kill chains in current dataset</div>';
+    return;
+  }
+  document.getElementById('kc-body').innerHTML = chains.map(kc=>`
+    <div class="kc">
+      <div class="kc-title">🚨 ${kc.chain_name}</div>
+      <div class="kc-desc">${kc.description}</div>
+      <div class="kc-meta">
+        <div>Events: <span>${kc.event_count}</span></div>
+        <div>Match: <span>${kc.match_percent}%</span></div>
+        <div>IPs: <span>${(kc.source_ips||[]).slice(0,2).join(', ')}</span></div>
+      </div>
+    </div>`).join('');
+}
+
+// ── AI ANALYSIS ────────────────────────────────────────────────
+async function analyzeEvent(event) {
+  document.getElementById('ai-body').innerHTML=`<div class="empty" style="padding:30px"><div class="status-dot" style="display:inline-block;margin-right:8px"></div>Gemini AI analyzing...</div>`;
+  try {
+    const r = await fetch(`${API}/analyze`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:event.message||'',severity:event.severity||'UNKNOWN',source_ip:event.source_ip||'unknown',anomaly_score:event.anomaly_score||0,technique_id:event.technique_id||null,tactic:event.tactic||null})
+    });
+    const d = await r.json();
+    const recs=(d.recommendations||[]).map(r=>`<div class="ai-rec">${r}</div>`).join('');
+    const fp=Math.round((d.false_positive_probability||0)*100);
+    document.getElementById('ai-body').innerHTML=`
+      <div class="ai-f"><label>Threat Type</label><p style="color:var(--red);font-weight:700">${d.threat_type||'Unknown'}</p></div>
+      <div class="ai-f"><label>What is happening</label><p>${d.explanation||'—'}</p></div>
+      <div class="ai-f"><label>Attacker Intent</label><p>${d.attacker_intent||'—'}</p></div>
+      <div class="ai-f"><label>Risk if not stopped</label><p style="color:var(--yellow)">${d.risk||'—'}</p></div>
+      <div class="ai-f"><label>Recommended Actions</label>${recs}</div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--muted)">
+        <span>FP probability: <strong style="color:${fp<20?'var(--green)':fp<50?'var(--yellow)':'var(--red)'}">${fp}%</strong></span>
+        <span>${d.source||''}</span>
+      </div>`;
+  } catch(e) {
+    document.getElementById('ai-body').innerHTML=`<div class="empty">Analysis failed — is the API running?</div>`;
+  }
+}
+
+// ── MODE SWITCHER ──────────────────────────────────────────────
+async function switchMode(mode) {
+  if (currentMode === mode) return;
+
+  // Show overlay
+  const overlay = document.getElementById('overlay');
+  const labels  = { sample:'📊 Loading Sample Attack Logs...', realpc:'💻 Loading Your PC Logs...', combined:'🔀 Loading Combined Logs...' };
+  document.getElementById('overlay-text').textContent = labels[mode];
+  overlay.classList.add('show');
+
+  // Update buttons
+  document.querySelectorAll('.mode-btn').forEach(b=>{b.classList.remove('active');b.classList.add('loading');});
+
+  try {
+    const r = await fetch(`${API}/switch/${mode}`, { method:'POST' });
+    const d = await r.json();
+
+    if (d.success) {
+      currentMode = mode;
+
+      // Update mode badge
+      const badge = document.getElementById('mode-badge');
+      const labels2 = {
+        sample:   { cls:'sample',   text:'📊 Showing: Sample Attack Logs (450 events)' },
+        realpc:   { cls:'realpc',   text:'💻 Showing: My Real PC Windows Logs' },
+        combined: { cls:'combined', text:'🔀 Showing: Combined — Sample + Real PC Logs' },
+      };
+      badge.className = `mode-badge ${labels2[mode].cls}`;
+      badge.textContent = labels2[mode].text;
+
+      showToast(`✅ ${d.message}`, 'blue');
+
+      // Reload data
+      await fetchMetrics();
+      await fetchEvents();
+      await fetchKillChains();
+    } else {
+      showToast(`❌ Switch failed`, 'red');
+    }
+  } catch(e) {
+    showToast(`❌ ${e.message}`, 'red');
+  }
+
+  // Hide overlay, update buttons
+  overlay.classList.remove('show');
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('loading'));
+  document.getElementById(`btn-${mode}`).classList.add('active');
+}
+
+// ── WEBSOCKET ──────────────────────────────────────────────────
+function connectWS() {
+  if (ws) { try{ws.close();}catch(e){} }
+  ws = new WebSocket(WS);
+  ws.onopen = () => {
+    document.getElementById('ws-status').textContent = '⚡ Live';
+    document.getElementById('ws-status').className   = 'ws-on';
+  };
+  ws.onmessage = (msg) => {
+    try {
+      const d = JSON.parse(msg.data);
+      document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+      if (d.type==='new_events' && d.events?.length) {
+        allEvents = [...d.events,...allEvents].slice(0,200);
+        renderEvents(); updateChart(allEvents);
+        const crits = d.events.filter(e=>e.severity==='CRITICAL');
+        if (crits.length) showToast(`🚨 ${crits.length} CRITICAL event(s) detected!`,'red');
+      }
+      if (d.type==='metrics' && d.metrics) {
+        document.getElementById('m-total').textContent     = (d.metrics.total_events||0).toLocaleString();
+        document.getElementById('m-anomalies').textContent = d.metrics.total_anomalies||0;
+      }
+      if (d.type==='kill_chains' && d.kill_chains?.length) {
+        renderKillChains(d.kill_chains);
+        showToast(`🚨 Kill chain: ${d.kill_chains[0].chain_name}`,'red');
+      }
+    } catch(e){}
+  };
+  ws.onclose = () => {
+    document.getElementById('ws-status').textContent = '⚡ Reconnecting...';
+    document.getElementById('ws-status').className   = 'ws-off';
+    setTimeout(connectWS, 3000);
+  };
+  ws.onerror = () => {
+    document.getElementById('ws-status').textContent = '⚡ Offline';
+    document.getElementById('ws-status').className   = 'ws-off';
+  };
+}
+
+// ── TOAST ──────────────────────────────────────────────────────
+function showToast(msg, color='blue') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = color==='red'?'var(--red)':'var(--blue)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 4000);
+}
+
+// ── INIT ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  initChart();
+  fetchMetrics();
+  fetchEvents();
+  fetchKillChains();
+  connectWS();
+  setInterval(()=>{ fetchMetrics(); fetchKillChains(); }, 30000);
+  setInterval(fetchEvents, 10000);
+});
+</script>
+</body>
+</html>

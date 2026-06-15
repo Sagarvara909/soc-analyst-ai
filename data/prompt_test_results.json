@@ -1,0 +1,222 @@
+[
+  {
+    "event": "Failed password for invalid user admin from 195.178.55.22 port 44392 ssh2",
+    "severity": "HIGH",
+    "technique": "T1110.001",
+    "threat_type": "Brute Force (T1110.001)",
+    "quality": 90,
+    "grade": "A",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.02
+  },
+  {
+    "event": "Multiple failed login attempts: 847 failures in 60 seconds from 77.88.44.3",
+    "severity": "HIGH",
+    "technique": "T1110.001",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "powershell.exe -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBj",
+    "severity": "HIGH",
+    "technique": "T1059.001",
+    "threat_type": "Encoded PowerShell (T1059.001)",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.07
+  },
+  {
+    "event": "cmd.exe spawned from word.exe with suspicious arguments",
+    "severity": "HIGH",
+    "technique": "T1059.003",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "LSASS memory read detected - possible credential dump via mimikatz",
+    "severity": "CRITICAL",
+    "technique": "T1055.012",
+    "threat_type": "LSASS Credential Dump (T1055.012)",
+    "quality": 90,
+    "grade": "A",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.01
+  },
+  {
+    "event": "EventID=4648 Logon with explicit credentials: admin account used from workstatio",
+    "severity": "HIGH",
+    "technique": "T1078",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "Port scan sweep: 65535 ports scanned in 4.2 seconds from 91.108.4.55",
+    "severity": "HIGH",
+    "technique": "T1046",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "SQL injection attempt detected in POST /api/login union select password from use",
+    "severity": "HIGH",
+    "technique": "T1190",
+    "threat_type": "SQL Injection (T1190)",
+    "quality": 90,
+    "grade": "A",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.03
+  },
+  {
+    "event": "Outbound beacon to known C2 IP 185.220.101.47:443 detected from 10.0.0.88",
+    "severity": "CRITICAL",
+    "technique": "T1071.001",
+    "threat_type": "C2 Beacon (T1071.001)",
+    "quality": 90,
+    "grade": "A",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.01
+  },
+  {
+    "event": "Large data transfer: 4.2GB sent to external IP 91.108.4.55 over port 443",
+    "severity": "CRITICAL",
+    "technique": "T1048",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "EventID=4698 New scheduled task created: Windows_Update_Helper running cmd.exe",
+    "severity": "HIGH",
+    "technique": "T1053.005",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "New service installed: svchost32.exe \u2014 likely malware masquerading as system pro",
+    "severity": "HIGH",
+    "technique": "T1543.003",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "EventID=1102 The Windows audit log was cleared by CORP\\administrator",
+    "severity": "CRITICAL",
+    "technique": "T1562.001",
+    "threat_type": "Log Clearing (T1562.001)",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.02
+  },
+  {
+    "event": "Windows Defender disabled via registry modification",
+    "severity": "CRITICAL",
+    "technique": "T1562.001",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "LDAP query for all domain users: (objectclass=*) \u2014 full AD dump attempted",
+    "severity": "MEDIUM",
+    "technique": "T1087.002",
+    "threat_type": "Low Risk",
+    "quality": 70,
+    "grade": "C",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.8
+  },
+  {
+    "event": "net user /domain command executed \u2014 domain account enumeration",
+    "severity": "MEDIUM",
+    "technique": "T1087.002",
+    "threat_type": "Low Risk",
+    "quality": 70,
+    "grade": "C",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.8
+  },
+  {
+    "event": "WMI execution across 14 internal hosts from single source in 2 minutes",
+    "severity": "CRITICAL",
+    "technique": "T1021.006",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "Pass-the-hash attack detected: NTLM authentication with hash from different host",
+    "severity": "CRITICAL",
+    "technique": "T1550.002",
+    "threat_type": "High Anomaly",
+    "quality": 80,
+    "grade": "B",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.2
+  },
+  {
+    "event": "Normal user authentication successful from known corporate device",
+    "severity": "INFO",
+    "technique": null,
+    "threat_type": "Low Risk",
+    "quality": 70,
+    "grade": "C",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.8
+  },
+  {
+    "event": "Scheduled backup job completed successfully \u2014 2.1GB transferred to backup server",
+    "severity": "LOW",
+    "technique": null,
+    "threat_type": "Low Risk",
+    "quality": 70,
+    "grade": "C",
+    "source": "rule-based (gemini error: No module named 'google.generativeai')",
+    "latency_ms": 0,
+    "fp_prob": 0.8
+  }
+]

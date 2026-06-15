@@ -1,80 +1,80 @@
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:00:00Z", "source_ip": "10.0.0.130", "event_id": "EVT-22100", "sensor": "edr-01"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:00:45Z", "source_ip": "91.108.4.55", "event_id": "EVT-72447", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:01:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-63728", "sensor": "siem"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:02:15Z", "source_ip": "185.220.101.47", "event_id": "EVT-38857", "sensor": "edr-01"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:03:00Z", "source_ip": "10.0.0.5", "event_id": "EVT-71181", "sensor": "edr-01"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:03:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-89693", "sensor": "siem"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:04:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-10050", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:05:15Z", "source_ip": "10.0.0.159", "event_id": "EVT-12166", "sensor": "waf-02"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:06:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-31959", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:06:45Z", "source_ip": "91.108.4.55", "event_id": "EVT-22421", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:07:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-95713", "sensor": "waf-02"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:08:15Z", "source_ip": "10.0.0.105", "event_id": "EVT-93528", "sensor": "waf-02"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:09:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-43506", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:09:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-56592", "sensor": "siem"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:10:30Z", "source_ip": "10.0.0.124", "event_id": "EVT-18572", "sensor": "siem"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:11:15Z", "source_ip": "195.178.55.22", "event_id": "EVT-34944", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:12:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-26697", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:12:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-17736", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:13:30Z", "source_ip": "10.0.0.150", "event_id": "EVT-38180", "sensor": "edr-01"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:14:15Z", "source_ip": "91.108.4.55", "event_id": "EVT-83443", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:15:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-69110", "sensor": "waf-02"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:15:45Z", "source_ip": "10.0.0.121", "event_id": "EVT-10726", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:16:30Z", "source_ip": "10.0.0.3", "event_id": "EVT-59613", "sensor": "edr-01"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:17:15Z", "source_ip": "10.0.0.115", "event_id": "EVT-99742", "sensor": "siem"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:18:00Z", "source_ip": "91.108.4.55", "event_id": "EVT-50788", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:18:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-86309", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:19:30Z", "source_ip": "10.0.0.162", "event_id": "EVT-44850", "sensor": "siem"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:20:15Z", "source_ip": "91.108.4.55", "event_id": "EVT-29025", "sensor": "waf-02"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:21:00Z", "source_ip": "10.0.0.44", "event_id": "EVT-69589", "sensor": "waf-02"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:21:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-55571", "sensor": "ids-03"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:22:30Z", "source_ip": "10.0.0.187", "event_id": "EVT-84614", "sensor": "waf-02"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:23:15Z", "source_ip": "10.0.0.118", "event_id": "EVT-32519", "sensor": "siem"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:24:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-87284", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:24:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-60386", "sensor": "ids-03"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:25:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-26451", "sensor": "siem"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:26:15Z", "source_ip": "10.0.0.146", "event_id": "EVT-85584", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:27:00Z", "source_ip": "10.0.0.183", "event_id": "EVT-69549", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:27:45Z", "source_ip": "10.0.0.99", "event_id": "EVT-81220", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:28:30Z", "source_ip": "10.0.0.49", "event_id": "EVT-36808", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:29:15Z", "source_ip": "195.178.55.22", "event_id": "EVT-66339", "sensor": "waf-02"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:30:00Z", "source_ip": "10.0.0.42", "event_id": "EVT-38567", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:30:45Z", "source_ip": "77.88.44.3", "event_id": "EVT-52109", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:31:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-47397", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:32:15Z", "source_ip": "10.0.0.70", "event_id": "EVT-56554", "sensor": "siem"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:33:00Z", "source_ip": "10.0.0.200", "event_id": "EVT-75589", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:33:45Z", "source_ip": "10.0.0.177", "event_id": "EVT-48129", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:34:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-63788", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:35:15Z", "source_ip": "10.0.0.86", "event_id": "EVT-53837", "sensor": "edr-01"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:36:00Z", "source_ip": "10.0.0.16", "event_id": "EVT-60010", "sensor": "edr-01"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:36:45Z", "source_ip": "10.0.0.157", "event_id": "EVT-35353", "sensor": "ids-03"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:37:30Z", "source_ip": "195.178.55.22", "event_id": "EVT-93114", "sensor": "siem"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:38:15Z", "source_ip": "10.0.0.25", "event_id": "EVT-78522", "sensor": "ids-03"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:39:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-32478", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:39:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-18288", "sensor": "siem"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:40:30Z", "source_ip": "10.0.0.72", "event_id": "EVT-34462", "sensor": "edr-01"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:41:15Z", "source_ip": "10.0.0.189", "event_id": "EVT-77735", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:42:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-79469", "sensor": "waf-02"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:42:45Z", "source_ip": "10.0.0.193", "event_id": "EVT-27224", "sensor": "ids-03"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:43:30Z", "source_ip": "10.0.0.182", "event_id": "EVT-41404", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:44:15Z", "source_ip": "185.220.101.47", "event_id": "EVT-52594", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:45:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-98968", "sensor": "waf-02"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:45:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-22250", "sensor": "waf-02"}
-{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:46:30Z", "source_ip": "10.0.0.196", "event_id": "EVT-70793", "sensor": "waf-02"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:47:15Z", "source_ip": "10.0.0.88", "event_id": "EVT-18072", "sensor": "siem"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:48:00Z", "source_ip": "91.108.4.55", "event_id": "EVT-39717", "sensor": "siem"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:48:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-11092", "sensor": "edr-01"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:49:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-95722", "sensor": "siem"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:50:15Z", "source_ip": "10.0.0.91", "event_id": "EVT-11570", "sensor": "siem"}
-{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:51:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-70499", "sensor": "waf-02"}
-{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:51:45Z", "source_ip": "10.0.0.172", "event_id": "EVT-38694", "sensor": "edr-01"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:52:30Z", "source_ip": "10.0.0.4", "event_id": "EVT-99429", "sensor": "siem"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:53:15Z", "source_ip": "10.0.0.30", "event_id": "EVT-60762", "sensor": "ids-03"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:54:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-27268", "sensor": "ids-03"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:54:45Z", "source_ip": "10.0.0.176", "event_id": "EVT-21078", "sensor": "siem"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:55:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-26409", "sensor": "ids-03"}
-{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:56:15Z", "source_ip": "77.88.44.3", "event_id": "EVT-93248", "sensor": "siem"}
-{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:57:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-81171", "sensor": "ids-03"}
-{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:57:45Z", "source_ip": "91.108.4.55", "event_id": "EVT-17660", "sensor": "waf-02"}
-{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:58:30Z", "source_ip": "10.0.0.44", "event_id": "EVT-95784", "sensor": "ids-03"}
-{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:59:15Z", "source_ip": "10.0.0.41", "event_id": "EVT-34647", "sensor": "edr-01"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:00:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-89478", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:00:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-33947", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:01:30Z", "source_ip": "195.178.55.22", "event_id": "EVT-31938", "sensor": "ids-03"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:02:15Z", "source_ip": "10.0.0.15", "event_id": "EVT-65866", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:03:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-32660", "sensor": "waf-02"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:03:45Z", "source_ip": "10.0.0.171", "event_id": "EVT-12560", "sensor": "ids-03"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:04:30Z", "source_ip": "10.0.0.104", "event_id": "EVT-45840", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:05:15Z", "source_ip": "77.88.44.3", "event_id": "EVT-11286", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:06:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-19946", "sensor": "siem"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:06:45Z", "source_ip": "195.178.55.22", "event_id": "EVT-34750", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:07:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-44636", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:08:15Z", "source_ip": "195.178.55.22", "event_id": "EVT-88903", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:09:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-34448", "sensor": "ids-03"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:09:45Z", "source_ip": "10.0.0.30", "event_id": "EVT-52075", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:10:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-31625", "sensor": "waf-02"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:11:15Z", "source_ip": "10.0.0.134", "event_id": "EVT-19713", "sensor": "siem"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:12:00Z", "source_ip": "10.0.0.19", "event_id": "EVT-44690", "sensor": "waf-02"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:12:45Z", "source_ip": "10.0.0.160", "event_id": "EVT-10141", "sensor": "waf-02"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:13:30Z", "source_ip": "10.0.0.47", "event_id": "EVT-77024", "sensor": "waf-02"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:14:15Z", "source_ip": "10.0.0.81", "event_id": "EVT-61468", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:15:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-29189", "sensor": "ids-03"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:15:45Z", "source_ip": "10.0.0.131", "event_id": "EVT-86885", "sensor": "waf-02"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:16:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-66809", "sensor": "siem"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:17:15Z", "source_ip": "10.0.0.61", "event_id": "EVT-94384", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:18:00Z", "source_ip": "91.108.4.55", "event_id": "EVT-59403", "sensor": "waf-02"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:18:45Z", "source_ip": "10.0.0.114", "event_id": "EVT-67487", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:19:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-51252", "sensor": "waf-02"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:20:15Z", "source_ip": "10.0.0.35", "event_id": "EVT-67335", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:21:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-91341", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:21:45Z", "source_ip": "77.88.44.3", "event_id": "EVT-65057", "sensor": "ids-03"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:22:30Z", "source_ip": "10.0.0.106", "event_id": "EVT-43216", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:23:15Z", "source_ip": "195.178.55.22", "event_id": "EVT-53493", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:24:00Z", "source_ip": "195.178.55.22", "event_id": "EVT-47287", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:24:45Z", "source_ip": "77.88.44.3", "event_id": "EVT-45378", "sensor": "ids-03"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:25:30Z", "source_ip": "185.220.101.47", "event_id": "EVT-20580", "sensor": "edr-01"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:26:15Z", "source_ip": "10.0.0.25", "event_id": "EVT-36289", "sensor": "siem"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:27:00Z", "source_ip": "10.0.0.187", "event_id": "EVT-61070", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:27:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-87759", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:28:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-86849", "sensor": "siem"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:29:15Z", "source_ip": "10.0.0.21", "event_id": "EVT-23557", "sensor": "ids-03"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:30:00Z", "source_ip": "10.0.0.113", "event_id": "EVT-93015", "sensor": "siem"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:30:45Z", "source_ip": "185.220.101.47", "event_id": "EVT-59146", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:31:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-19211", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:32:15Z", "source_ip": "77.88.44.3", "event_id": "EVT-32174", "sensor": "edr-01"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:33:00Z", "source_ip": "10.0.0.119", "event_id": "EVT-54479", "sensor": "waf-02"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:33:45Z", "source_ip": "10.0.0.182", "event_id": "EVT-79025", "sensor": "siem"}
+{"severity": "HIGH", "message": "SQL injection attempt detected in POST /api/login", "timestamp": "2026-01-15T08:34:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-26986", "sensor": "waf-02"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:35:15Z", "source_ip": "10.0.0.47", "event_id": "EVT-32917", "sensor": "edr-01"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:36:00Z", "source_ip": "10.0.0.112", "event_id": "EVT-83167", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:36:45Z", "source_ip": "91.108.4.55", "event_id": "EVT-51806", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:37:30Z", "source_ip": "91.108.4.55", "event_id": "EVT-15168", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:38:15Z", "source_ip": "185.220.101.47", "event_id": "EVT-11869", "sensor": "edr-01"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:39:00Z", "source_ip": "10.0.0.63", "event_id": "EVT-75687", "sensor": "ids-03"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:39:45Z", "source_ip": "10.0.0.28", "event_id": "EVT-54171", "sensor": "siem"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:40:30Z", "source_ip": "10.0.0.89", "event_id": "EVT-26432", "sensor": "edr-01"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:41:15Z", "source_ip": "10.0.0.99", "event_id": "EVT-21405", "sensor": "waf-02"}
+{"severity": "MEDIUM", "message": "DNS query flood: 1200 requests per minute to random subdomains", "timestamp": "2026-01-15T08:42:00Z", "source_ip": "10.0.0.31", "event_id": "EVT-78789", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:42:45Z", "source_ip": "77.88.44.3", "event_id": "EVT-89266", "sensor": "ids-03"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:43:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-88812", "sensor": "siem"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:44:15Z", "source_ip": "10.0.0.11", "event_id": "EVT-13319", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:45:00Z", "source_ip": "91.108.4.55", "event_id": "EVT-57069", "sensor": "waf-02"}
+{"severity": "LOW", "message": "Failed login attempt: 3 failures for user admin", "timestamp": "2026-01-15T08:45:45Z", "source_ip": "10.0.0.14", "event_id": "EVT-18140", "sensor": "waf-02"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:46:30Z", "source_ip": "10.0.0.113", "event_id": "EVT-19069", "sensor": "waf-02"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:47:15Z", "source_ip": "10.0.0.106", "event_id": "EVT-75634", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:48:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-70274", "sensor": "siem"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:48:45Z", "source_ip": "10.0.0.18", "event_id": "EVT-74485", "sensor": "siem"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:49:30Z", "source_ip": "10.0.0.13", "event_id": "EVT-93844", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:50:15Z", "source_ip": "195.178.55.22", "event_id": "EVT-30460", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:51:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-57272", "sensor": "edr-01"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:51:45Z", "source_ip": "10.0.0.67", "event_id": "EVT-62700", "sensor": "siem"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:52:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-14529", "sensor": "waf-02"}
+{"severity": "HIGH", "message": "Encoded PowerShell execution detected: -EncodedCommand", "timestamp": "2026-01-15T08:53:15Z", "source_ip": "185.220.101.47", "event_id": "EVT-19618", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:54:00Z", "source_ip": "77.88.44.3", "event_id": "EVT-30092", "sensor": "ids-03"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:54:45Z", "source_ip": "10.0.0.23", "event_id": "EVT-49853", "sensor": "siem"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:55:30Z", "source_ip": "10.0.0.124", "event_id": "EVT-64530", "sensor": "edr-01"}
+{"severity": "INFO", "message": "User logged in successfully from known device", "timestamp": "2026-01-15T08:56:15Z", "source_ip": "10.0.0.94", "event_id": "EVT-73246", "sensor": "siem"}
+{"severity": "CRITICAL", "message": "LSASS memory read detected - possible credential dump", "timestamp": "2026-01-15T08:57:00Z", "source_ip": "185.220.101.47", "event_id": "EVT-36861", "sensor": "edr-01"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:57:45Z", "source_ip": "10.0.0.12", "event_id": "EVT-55611", "sensor": "edr-01"}
+{"severity": "HIGH", "message": "Outbound connection to known C2 IP 185.220.101.47", "timestamp": "2026-01-15T08:58:30Z", "source_ip": "77.88.44.3", "event_id": "EVT-29771", "sensor": "ids-03"}
+{"severity": "MEDIUM", "message": "Large file transfer to removable media: 4.2GB", "timestamp": "2026-01-15T08:59:15Z", "source_ip": "10.0.0.61", "event_id": "EVT-63615", "sensor": "waf-02"}

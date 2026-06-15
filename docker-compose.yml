@@ -1,0 +1,39 @@
+# docker-compose.yml — AI SOC Analyst
+# Start everything: docker-compose up
+# Stop everything:  docker-compose down
+
+version: "3.9"
+
+services:
+  soc-api:
+    build: .
+    container_name: soc-analyst-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data        # persist database between restarts
+      - ./models:/app/models    # persist trained ML models
+      - ./logs:/app/logs        # persist log files
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: serve dashboard as static file
+  soc-dashboard:
+    image: nginx:alpine
+    container_name: soc-analyst-dashboard
+    ports:
+      - "3000:80"
+    volumes:
+      - ./dashboard.html:/usr/share/nginx/html/index.html:ro
+    depends_on:
+      - soc-api
+    restart: unless-stopped

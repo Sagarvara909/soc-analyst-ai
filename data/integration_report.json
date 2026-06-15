@@ -1,0 +1,137 @@
+{
+  "started_at": "2026-06-11T18:16:15.317085",
+  "components": {
+    "Log Parser": {
+      "status": "pass",
+      "ms": 8,
+      "data": {
+        "events_loaded": 450,
+        "formats": 4,
+        "parse_rate": 90000
+      }
+    },
+    "Feature Engineering": {
+      "status": "pass",
+      "ms": 825,
+      "data": {
+        "rows": 450,
+        "ml_cols": 14
+      }
+    },
+    "ML Ensemble Detector": {
+      "status": "pass",
+      "ms": 2305,
+      "data": {
+        "total_events": 450,
+        "anomalies_found": 20,
+        "true_positives": 11,
+        "false_positives": 9,
+        "false_negatives": 89,
+        "precision": 0.55,
+        "recall": 0.11,
+        "f1_score": 0.183,
+        "fp_rate": 0.026
+      }
+    },
+    "MITRE ATT&CK Classifier": {
+      "status": "pass",
+      "ms": 49,
+      "data": {
+        "tag_rate": 67.1,
+        "tagged": 302
+      }
+    },
+    "SQLite Database": {
+      "status": "pass",
+      "ms": 20,
+      "data": {
+        "total_events": 450,
+        "total_anomalies": 20,
+        "false_positives_blocked": 2,
+        "critical_events": 23,
+        "high_events": 77,
+        "mitre_tagged": 302,
+        "mitre_tag_rate": 67.1,
+        "avg_anomaly_score": 0.387,
+        "top_attacker_ip": "91.108.4.55",
+        "top_technique": "T1190"
+      }
+    },
+    "Correlation Engine": {
+      "status": "pass",
+      "ms": 339,
+      "data": {
+        "groups": 1,
+        "chains": 0
+      }
+    },
+    "AI Analyzer (Gemini)": {
+      "status": "pass",
+      "ms": 2390,
+      "data": {
+        "p50": 251,
+        "p95": 1906
+      }
+    },
+    "End-to-End Pipeline Speed": {
+      "status": "pass",
+      "ms": 552,
+      "data": {
+        "parse_ms": 4,
+        "features_ms": 24,
+        "ml_ms": 477,
+        "classify_ms": 44,
+        "correlate_ms": 3,
+        "total_ms": 551
+      }
+    }
+  },
+  "performance": {
+    "parse_events_per_sec": 90000,
+    "feature_eng_ms": 27,
+    "ml_training_ms": 487,
+    "anomaly_count": 20,
+    "precision": 0.55,
+    "fp_rate": 0.026,
+    "mitre_tag_rate": 67.1,
+    "mitre_accuracy": "3/3",
+    "db_query_ms": 9,
+    "correlation_ms": 6,
+    "graph_nodes": 200,
+    "graph_edges": 1994,
+    "kill_chains": 0,
+    "ai_latency_p50": 251,
+    "ai_latency_p95": 1906,
+    "ai_cache_ms": 0,
+    "e2e_total_ms": 551,
+    "e2e_breakdown": {
+      "parse_ms": 4,
+      "features_ms": 24,
+      "ml_ms": 477,
+      "classify_ms": 44,
+      "correlate_ms": 3,
+      "total_ms": 551
+    },
+    "e2e_events_per_sec": 817
+  },
+  "bottlenecks": [
+    "AI latency p95=1906ms exceeds 800ms target"
+  ],
+  "passed": [
+    "Log Parser",
+    "Feature Engineering",
+    "ML Ensemble Detector",
+    "MITRE ATT&CK Classifier",
+    "SQLite Database",
+    "Correlation Engine",
+    "AI Analyzer (Gemini)",
+    "End-to-End Pipeline Speed"
+  ],
+  "failed": [],
+  "finished_at": "2026-06-11T18:16:21.807269",
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8
+  }
+}
