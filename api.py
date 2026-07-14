@@ -20,6 +20,15 @@ from typing import Optional
 import asyncio, os
 from datetime import datetime
 
+import os
+
+# Auto-run pipeline if database doesn't exist
+if not os.path.exists("data/soc_analyst.db"):
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("logs", exist_ok=True)
+    os.system("python generate_sample_logs.py")
+    os.system("python db.py")
+
 from db import (
     init_db, get_recent_events, get_events_by_severity,
     get_anomalies, mark_false_positive, get_metrics, get_top_ips
